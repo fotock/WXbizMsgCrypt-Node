@@ -1,0 +1,29 @@
+{
+  "name": "wxbizmsgcrypto",
+  "version": "2.0.0",
+  "description": "wechat msg crypto",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spadesk1991/WXbizMsgCrypt.git"
+  },
+  "keywords": [
+    "wechat",
+    "crypto",
+    "weixin",
+    "node"
+  ],
+  "author": "spadesk1991",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/spadesk1991/WXbizMsgCrypt/issues"
+  },
+  "homepage": "https://github.com/spadesk1991/WXbizMsgCrypt#readme",
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "sha1": "^1.1.1"
+  }
+}
