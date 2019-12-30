@@ -6,14 +6,14 @@ class XMLParse {
   /**
    *
    * @param {String} msg_encrypt
-   * @param {String} msg_signaturet
+   * @param {String} msg_signature
    * @param {String} timestamp
    * @param {String} nonce
    */
-  generate(msg_encrypt, msg_signaturet, timestamp, nonce) {
+  generate(msg_encrypt, msg_signature, timestamp, nonce) {
     return `<xml>
     <Encrypt><![CDATA[${msg_encrypt}]]></Encrypt>
-    <MsgSignature><![CDATA[${msg_signaturet}]]></MsgSignature>
+    <MsgSignature><![CDATA[${msg_signature}]]></MsgSignature>
     <TimeStamp>${timestamp}</TimeStamp>
     <Nonce><![CDATA[${nonce}]]></Nonce>
     </xml>`;
@@ -126,7 +126,7 @@ class WXbizMsgCrypt {
    * @param {String} timestamp
    * @param {String} nonce
    */
-  EncryptMsg(text, timestamp, nonce) {
+  encryptMsg(text, timestamp, nonce) {
     const prp = new Prpcrypt(this.key);
     const encrypted = prp.encrypt(text, this.appid);
     const msg_signature = this.mysha1(this.token, timestamp, nonce, encrypted);
@@ -141,7 +141,7 @@ class WXbizMsgCrypt {
    * @param {String} timestamp
    * @param {String} nonce
    */
-  DecryptMsg(encrypted, msg_signature, timestamp, nonce) {
+  decryptMsg(encrypted, msg_signature, timestamp, nonce) {
     const signature = this.mysha1(this.token, timestamp, nonce, encrypted);
     if (msg_signature !== signature) {
       throw new Error("msg_signature错误");
@@ -171,15 +171,13 @@ class WXbizMsgCrypt {
     return re;
   }
   JSON2WechatXML(FromUserName, ToUserName, CreateTime, Content) {
-    return `
-    <xml>
+    return `<xml>
    <ToUserName><![CDATA[${ToUserName}]]></ToUserName>
    <FromUserName><![CDATA[${FromUserName}]]></FromUserName>
    <CreateTime>${CreateTime}</CreateTime>
    <MsgType><![CDATA[text]]></MsgType>
    <Content><![CDATA[${Content}]]></Content>
-   </xml>
- `;
+   </xml>`;
   }
 }
 
