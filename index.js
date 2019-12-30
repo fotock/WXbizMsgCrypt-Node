@@ -114,7 +114,7 @@ class WXbizMsgCrypt {
  * @param {String} nonce
  * @param {String} encrypt
  */
-  mysha1(token, timestamp, nonce, encrypt) {
+  wesha1(token, timestamp, nonce, encrypt) {
     const param = [token, timestamp, nonce, encrypt];
     return sha1(param.sort().join(""));
   }
@@ -128,7 +128,7 @@ class WXbizMsgCrypt {
   encryptMsg(text, timestamp, nonce) {
     const prp = new Prpcrypt(this.key);
     const encrypted = prp.encrypt(text, this.appid);
-    const msg_signature = this.mysha1(this.token, timestamp, nonce, encrypted);
+    const msg_signature = this.wesha1(this.token, timestamp, nonce, encrypted);
     const xmlParse = new XMLParse();
     return xmlParse.generate(encrypted, msg_signature, timestamp, nonce);
   }
@@ -141,7 +141,7 @@ class WXbizMsgCrypt {
    * @param {String} nonce
    */
   decryptMsg(encrypted, msg_signature, timestamp, nonce) {
-    const signature = this.mysha1(this.token, timestamp, nonce, encrypted);
+    const signature = this.wesha1(this.token, timestamp, nonce, encrypted);
     if (msg_signature !== signature) {
       throw new Error("msg_signature错误");
     }
