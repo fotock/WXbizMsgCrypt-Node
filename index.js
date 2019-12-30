@@ -77,9 +77,8 @@ class Prpcrypt {
     decipher.setAutoPadding(false);
     let plain_text = decipher.update(encrypted, 'base64');
     plain_text = Buffer.concat([plain_text, decipher.final()]);
-    let pad = plain_text[plain_text.length - 1];
-    if (pad < 1 || pad > 32) pad = 0;
-    plain_text = plain_text.slice(20, -pad).toString('utf8').replace(/<\/xml>.*/, '</xml>');
+    let len = plain_text.readInt32BE(16);
+    plain_text = plain_text.slice(20, 20 + len).toString('utf8').replace(/<\/xml>.*/, '</xml>');
     return plain_text;
   }
   /**
