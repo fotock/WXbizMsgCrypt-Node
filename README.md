@@ -6,15 +6,14 @@
 - 修复了原库 spadesk1991/WXbizMsgCrypt 中的解密消息体里带有appId 的问题
 - 更新了方法命名规范
 
-## Installation
+## 安装/Installation
 
-## Usage
 ```bash
 $ npm i wxbizmsgcrypt-node --save
 ```
 
 
-## Example
+## 示例/Example
 
 ```js
 const WXBizMsgCrypt = require("wxbizmsgcrypt-node");
@@ -49,11 +48,11 @@ try {
 }
 ```
 
-## 测试
+## 测试/Test
 
 用的是微信企业号进行的消息测试。
 
-## 贡献
+## 贡献/
 
 微信加解密消息库Node JS版的好用的不多。 欢迎大家共同贡献力量。
 
