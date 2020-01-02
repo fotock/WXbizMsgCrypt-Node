@@ -1,6 +1,10 @@
 # WXbizMsgCrypt-Node
 WXbizMsgCrypt-Node
 
+## 修复
+
+- 修复了 spadesk1991/WXbizMsgCrypt 中的解密消息体里带有appId 的问题
+- 更新了方法命名规范
 
 ## Installation
 
@@ -45,4 +49,7 @@ try {
 }
 ```
 
+## 共建
+
+Node JS的微信加解密库好用的不多。 欢迎大家共同贡献力量。
 
